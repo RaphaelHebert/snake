@@ -1,0 +1,84 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container {
+  width: 50%;
+  padding-top: 50%;
+  position: relative;
+}
+
+.screen {
+  background: black;
+  box-sizing: content-box;
+  border: 3px solid grey;
+  color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.head {
+  position: absolute;
+  background: greenyellow;
+  width: 2%;
+  height: 2%;
+}
+
+.apple {
+  position: absolute;
+  background: red;
+  width: 2%;
+  height: 2%;
+}
+
+.bodyPart {
+  position: absolute;
+  background: green;
+  width: 2%;
+  height: 2%;
+}
+
+.scoreBar {
+  border: solid 3px green;
+  background: lightgray;
+  padding: 2%;
+  margin: auto;
+}
+
+.lost {
+  background: red;
+  position: absolute;
+  top: 40vh;
+  left: 30vw;
+  width: 40vw;
+  height: 20vh;
+  z-index: 2;
+}
+
+.lost button {
+  border: solid 2px black;
+  padding: 2%;
+}
+
+.lost button:hover {
+  border: dashed 2px black;
+  color: red;
+  background: black;
+  padding: 2%;
+}
+
+.flexColCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
