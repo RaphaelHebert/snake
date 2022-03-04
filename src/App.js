@@ -30,11 +30,11 @@ function App() {
   useEffect(() => applePos(), [])
 
   return (
-    <>
+    <div className="window" >
       {lost && <Lost score={score}/>}
-      <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost}/>
       <ScoreBar score={score >= 0? score: 0} />
-    </>
+      <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost}/>
+    </div>
   );
 }
 
