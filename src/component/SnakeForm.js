@@ -3,11 +3,11 @@ const handleSubmit = e => {
     e.preventDefault()
 }
 
-const SnakeForm = ({handleChange, speed}) => {
+const SnakeForm = ({handleChange, speed, play}) => {
     return(
         <form onSubmit={handleSubmit}>
             <label> Speed :
-                <fieldset id="speed" onChange={handleChange}>
+                <fieldset id="speed" onChange={handleChange} disabled={play}>
                     <label> Hard
                         <input type="radio" value="50" name="speed" checked={speed===50}/>
                     </label>
@@ -19,6 +19,7 @@ const SnakeForm = ({handleChange, speed}) => {
                     </label>
                 </fieldset>
             </label>
+            {play && <button onClick={() => window.location.reload()}>Reset</button>}
         </form>
     )
 }

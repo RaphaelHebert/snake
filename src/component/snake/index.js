@@ -75,8 +75,10 @@ const Snake = ({ apple, applePos, loose, score }) => {
         if(["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(e.key)){
             window.localStorage.setItem("snakeRunner", JSON.stringify({'direction': e.key}))
         } else if(e.key === "Enter"){
-            setPlay(!play);
-            setHead([head[0], head[1]])
+            if(!play){
+                setPlay(!play);
+                setHead([head[0], head[1]])
+            }
         }
     }
 
@@ -113,7 +115,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
         <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
         <div className="flexColCenter">
             <ScoreBar score={score >= 0? score: 0} />
-            <SnakeForm handleChange={handleChange} speed={speed}/>
+            <SnakeForm handleChange={handleChange} speed={speed} play={play}/>
         </div>
         <div className='container'>
             <div className='screen'>
