@@ -4,10 +4,6 @@ body {
   font-size: 1.8vw;
 }
 
-span {
-  font-family: 'Permanent Marker';
-}
-
 button {
   background: lightcoral;
   border-radius: 5px;
@@ -28,7 +24,16 @@ fieldset {
   padding-bottom: 5vh;
 }
 
+form p{
+  font-size: 1.3vw;
+  color: red;
+}
+
 h1 {
+  font-family: 'Permanent Marker';
+}
+
+span {
   font-family: 'Permanent Marker';
 }
 
