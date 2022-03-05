@@ -3,9 +3,9 @@ const handleSubmit = e => {
     e.preventDefault()
 }
 
-const SnakeForm = ({handleChange, speed, play}) => {
+const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="flexColCenter" onSubmit={handleSubmit}>
             <label> Speed :
                 <fieldset id="speed" onChange={handleChange} disabled={play}>
                     <label> Hard
@@ -19,7 +19,10 @@ const SnakeForm = ({handleChange, speed, play}) => {
                     </label>
                 </fieldset>
             </label>
-            {play && <button onClick={() => window.location.reload()}>Reset</button>}
+            <div className="main formButtons">
+                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}>Play !</div>
+                <button onClick={() => window.location.reload()}>Reset</button>
+            </div>
         </form>
     )
 }

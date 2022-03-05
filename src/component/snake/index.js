@@ -74,11 +74,19 @@ const Snake = ({ apple, applePos, loose, score }) => {
         }
         if(["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(e.key)){
             window.localStorage.setItem("snakeRunner", JSON.stringify({'direction': e.key}))
-        } else if(e.key === "Enter"){
-            if(!play){
-                setPlay(!play);
-                setHead([head[0], head[1]])
-            }
+        }
+        // else if(e.key === "Enter"){
+        //     if(!play){
+        //         setPlay(!play);
+        //         setHead([head[0], head[1]])
+        //     }
+        // }
+    }
+
+    const clickPlay = () => {
+        if(!play){
+            setPlay(!play);
+            setHead([head[0], head[1]])
         }
     }
 
@@ -113,23 +121,25 @@ const Snake = ({ apple, applePos, loose, score }) => {
 
     return(
         <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
-        <div className="flexColCenter">
-            <ScoreBar score={score >= 0? score: 0} />
-            <SnakeForm handleChange={handleChange} speed={speed} play={play}/>
-        </div>
-        <div className='container'>
-            <div className='screen'>
-                <div className="apple" style={{top: appleTop, left: appleLeft }} />
-                <div className="head" style={{top: headTop, left: headLeft }}/>
-                { body.length > 0 && body.map(bodyPart => 
-                        <div className="bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
+            <div className="flexColCenter sideDiv">
+                <h1>The Snake</h1>
+                <p>This is the snake, you know the rules...</p>
+                <p>Press <b>Play !</b> to start playing and use the <b>arrow keys</b> on your keyboard to change the snake's direction.</p>
+                <SnakeForm handleChange={handleChange} speed={speed} play={play} clickPlay={clickPlay}/>
+                <ScoreBar score={score >= 0? score: 0} />
+            </div>
+            <div className='container'>
+                <div className='screen'>
+                    <div className="apple" style={{top: appleTop, left: appleLeft }} />
+                    <div className="head" style={{top: headTop, left: headLeft }}/>
+                    { body.length > 0 && body.map(bodyPart => 
+                            <div className="bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
 
-                )}
+                    )}
+                </div>
             </div>
         </div>
-        </div>
-
     )
 }
 
-export default Snake
+export default Snake;

@@ -1,10 +1,54 @@
+body {
+  font-family: 'Permanent Marker';
+  text-align: justify;
+  font-size: 2vw;
+}
+
+button {
+  background: lightcoral;
+  border-radius: 3px;
+  border: solid 3px grey;
+  font-family: 'Permanent Marker';
+  font-size: 2vw;
+  padding: 1.5vw;
+}
+
+button:hover{
+  color: lightcoral;
+  background: grey;
+  border-radius: 3px;
+  border: solid 3px lightcoral;
+  font-family: 'Permanent Marker';
+  padding: 1.5vw;
+}
+
+fieldset {
+  border: none;
+  padding-bottom: 5vh;
+
+}
+
+h1 {
+  font-family: 'Permanent Marker';
+}
+
+
+/* 
+########################################################################
+
+classes
+
+########################################################################
+*/
 .main {
-  width: 100%;
   display: flex;
+  align-items: center;
   flex-flow: row nowrap;
   justify-content: space-around;
-  align-items: center;
+  width: 100%;
 }
+
+
 
 .container {
   width: 50%;
@@ -45,12 +89,6 @@
   height: 2%;
 }
 
-.scoreBar {
-  border: solid 3px green;
-  background: lightgray;
-  padding: 2%;
-}
-
 .lost {
   background: red;
   position: absolute;
@@ -78,5 +116,51 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
+
+.formButtons {
+  width: 40vw;
+  display:flex; 
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: stretch
+}
+
+.scoreBar {
+  border: solid 3px green;
+  background: lightgray;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+.sideDiv{
+  box-sizing: border-box;
+  max-height: 100vh;
+  max-width: 50%;
+  padding: 2% 5% 2% 2%;
+}
+
+.startButton{
+  background: lightseagreen;
+  border-radius: 3px;
+  border: solid 3px grey;
+  padding: 1.5vw;
+}
+
+.startButton:hover{
+  color: lightseagreen;
+  background: grey;
+  border-radius: 3px;
+  border: solid 3px lightseagreen;
+  cursor: pointer;
+  padding: 1.5vw;
+}
+
+.startButtonDisabled{
+  opacity: 50%;
+  background: lightseagreen;
+  border-radius: 3px;
+  border: solid 3px grey;
+  padding: 1.5vw;
 }
 
