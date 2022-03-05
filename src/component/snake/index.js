@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react'
+
+
+import ScoreBar from '../ScoreBar'
+import SnakeForm from '../SnakeForm'
 import '../../App.css'
 
-const Snake = ({ apple, applePos, loose }) => {
+
+
+const Snake = ({ apple, applePos, loose, score }) => {
     const [head, setHead] = useState([48, 48]) //top, left
     const [play, setPlay] = useState(false)
     const [body, setBody] = useState([])
     const [direction, setDirection] = useState('ArrowRight') //setup for starts and checks snake does go in unauthorized direction
+    const [speed, setSpeed] = useState(200)
 
     const appleTop = apple[0] + '%'
     const appleLeft = apple[1] +  '%'
@@ -13,7 +20,10 @@ const Snake = ({ apple, applePos, loose }) => {
     const headTop = head[0] + '%'
     const headLeft = head[1] + '%'
 
-   
+    //handle options form
+    const handleChange = e => {
+        setSpeed(parseInt(e.target.value))
+    }
 
     const headPos = (direction) => {
         switch(direction){
@@ -58,6 +68,8 @@ const Snake = ({ apple, applePos, loose }) => {
                         return
                     }
                     break;
+                default:
+                    break;
             }
         }
         if(["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(e.key)){
@@ -94,25 +106,27 @@ const Snake = ({ apple, applePos, loose }) => {
                 setDirection(newDirection.direction);
                 headPos(newDirection.direction);
             }   
-        }, 200)
+        }, speed)
     }, [head])
 
     return(
-        <>
         <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
-            <div className='container'>
-                <div className='screen'>
-                    <div className="apple" style={{top: appleTop, left: appleLeft }} />
-                    <div className="head" style={{top: headTop, left: headLeft }}/>
-                    { body.length > 0 && body.map(bodyPart => 
-                            <div className="bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
-    
-                    )}
+        <div className="flexColCenter">
+            <ScoreBar score={score >= 0? score: 0} />
+            <SnakeForm handleChange={handleChange} speed={speed}/>
+        </div>
+        <div className='container'>
+            <div className='screen'>
+                <div className="apple" style={{top: appleTop, left: appleLeft }} />
+                <div className="head" style={{top: headTop, left: headLeft }}/>
+                { body.length > 0 && body.map(bodyPart => 
+                        <div className="bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
 
-                </div>
+                )}
             </div>
         </div>
-        </>
+        </div>
+
     )
 }
 
