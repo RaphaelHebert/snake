@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 import './App.css';
 
 import Snake from './component/snake'
-import ScoreBar from './component/ScoreBar';
 import Lost from './component/Lost'
+import RegisterForm from './component/RegisterForm';
 
 
 function App() {
@@ -31,8 +32,13 @@ function App() {
 
   return (
     <>
+    <Routes>
+      <Route path="/" element={<>
       {lost && <Lost score={score}/>}
-      <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost} score={score}/>
+        <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost} score={score}/>
+      </>}/>
+        <Route path="/register" element={<RegisterForm />} />
+    </Routes>
     </>
   );
 }
