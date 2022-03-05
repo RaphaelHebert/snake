@@ -123,8 +123,8 @@ const Snake = ({ apple, applePos, loose, score }) => {
         <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
             <div className="flexColCenter sideDiv">
                 <h1>The Snake</h1>
-                <p>This is the snake, you know the rules...</p>
-                <p>Press <b>Play !</b> to start playing and use the <b>arrow keys</b> on your keyboard to change the snake's direction.</p>
+                <p>This is the snake, you know the rules...
+                Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
                 <SnakeForm handleChange={handleChange} speed={speed} play={play} clickPlay={clickPlay}/>
                 <ScoreBar score={score >= 0? score: 0} />
             </div>

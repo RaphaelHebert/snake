@@ -1,12 +1,16 @@
 body {
-  font-family: 'Permanent Marker';
+  font-family: 'Indie Flower';
   text-align: justify;
-  font-size: 2vw;
+  font-size: 1.8vw;
+}
+
+span {
+  font-family: 'Permanent Marker';
 }
 
 button {
   background: lightcoral;
-  border-radius: 3px;
+  border-radius: 5px;
   border: solid 3px grey;
   font-family: 'Permanent Marker';
   font-size: 2vw;
@@ -16,16 +20,12 @@ button {
 button:hover{
   color: lightcoral;
   background: grey;
-  border-radius: 3px;
   border: solid 3px lightcoral;
-  font-family: 'Permanent Marker';
-  padding: 1.5vw;
 }
 
 fieldset {
   border: none;
   padding-bottom: 5vh;
-
 }
 
 h1 {
@@ -40,40 +40,6 @@ classes
 
 ########################################################################
 */
-.main {
-  display: flex;
-  align-items: center;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  width: 100%;
-}
-
-
-
-.container {
-  width: 50%;
-  padding-top: 50%;
-  position: relative;
-}
-
-.screen {
-  background: black;
-  box-sizing: content-box;
-  border: 3px solid grey;
-  color: red;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.head {
-  position: absolute;
-  background: greenyellow;
-  width: 2%;
-  height: 2%;
-}
 
 .apple {
   position: absolute;
@@ -85,6 +51,33 @@ classes
 .bodyPart {
   position: absolute;
   background: green;
+  width: 2%;
+  height: 2%;
+}
+
+.container {
+  width: 50%;
+  padding-top: 50%;
+  position: relative;
+}
+
+.flexColCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.formButtons {
+  width: 40vw;
+  display:flex; 
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: stretch
+}
+
+.head {
+  position: absolute;
+  background: greenyellow;
   width: 2%;
   height: 2%;
 }
@@ -111,33 +104,39 @@ classes
   padding: 2%;
 }
 
-.flexColCenter {
+.main {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.formButtons {
-  width: 40vw;
-  display:flex; 
-  justify-content: space-evenly;
-  align-items: stretch;
-  align-content: stretch
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .scoreBar {
   border: solid 3px green;
   background: lightgray;
-  margin-top: 2vh;
+  margin-top: 3vh;
   width: 100%;
 }
 
+.screen {
+  background: black;
+  box-sizing: content-box;
+  border: 3px solid grey;
+  color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 .sideDiv{
-  box-sizing: border-box;
+  justify-content: space-between;
+  height: inherit;
   max-height: 100vh;
   max-width: 50%;
-  padding: 2% 5% 2% 2%;
+  padding: 2% 5% 0% 2%;
 }
 
 .startButton{
@@ -163,4 +162,5 @@ classes
   border: solid 3px grey;
   padding: 1.5vw;
 }
+
 

@@ -6,7 +6,7 @@ const handleSubmit = e => {
 const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
     return(
         <form className="flexColCenter" onSubmit={handleSubmit}>
-            <label> Speed :
+            <label> <span>Speed :</span>
                 <fieldset id="speed" onChange={handleChange} disabled={play}>
                     <label> Hard
                         <input type="radio" value="50" name="speed" checked={speed===50}/>
@@ -20,7 +20,7 @@ const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
                 </fieldset>
             </label>
             <div className="main formButtons">
-                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}>Play !</div>
+                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}><span>Play !</span></div>
                 <button onClick={() => window.location.reload()}>Reset</button>
             </div>
         </form>
