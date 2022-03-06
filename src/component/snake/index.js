@@ -120,7 +120,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
                     headPos(newDirection.direction);
                 }   
             }
-            return () => {unmounted = true; clearTimeout(timer)}
+            return () => {unmounted = true;}
         } 
         , speed);
     }, [head])
