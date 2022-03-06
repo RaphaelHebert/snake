@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 
 import ScoreBar from '../ScoreBar'
@@ -90,11 +90,9 @@ const Snake = ({ apple, applePos, loose, score }) => {
         }
     }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const bodySearch = 'o' + body.join('o').toString() + 'o'
-        console.log(bodySearch)
         const headCheck = "o" + [head[0] + '%', head[1] + '%'].toString() + "o"
-        console.log(headCheck)
         if(bodySearch.includes(headCheck)){
             setPlay(false)
             loose();
