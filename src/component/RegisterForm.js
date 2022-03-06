@@ -6,11 +6,6 @@ import axios from 'axios'
 import '../App.css'
 
 
-const handleSubmit = e => {
-    e.preventDefault()
-    //post to the backend
-}
-
 const schema = yup.object().shape({
     uname: yup
         .string()
@@ -35,21 +30,34 @@ const schema = yup.object().shape({
 
 })
 
+const baseForm = {
+    uname: "",
+    email: "",
+    password: "",
+    passwordConfirmation: ""
+}
+
 const RegisterForm = () => {
     const[disable, setDisable]= useState(true)
-    const[formData, setFormData] = useState({
-        uname: "",
-        email: "",
-        password: "",
-        passwordConfirmation: ""
-    })
+    const[formData, setFormData] = useState(baseForm)
+    const[formErrors, setFormErrors] = useState(baseForm)
 
-    const[formErrors, setFormErrors] = useState({
-        uname: "",
-        email: "",
-        password: "",
-        passwordConfirmation: ""
-    })
+    const handleSubmit = e => {
+        e.preventDefault()
+        const newUser = {
+            uname: formData.uname.trim(),
+            email: formData.email.trim(),
+            password: formData.password,
+            passwordConfirmation: formData.passwordConfirmation
+        }
+        //     axios.post("/", newUser)
+        //         .then(res => {
+        //             //do something with res
+        //             setFormData(baseForm)
+        //         })
+        //         .catch( err => console.log(err.message))
+    }
+    
 
     const handleFormError = (name, value) => {
         yup.reach(schema, name).validate(value)

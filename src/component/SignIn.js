@@ -6,11 +6,6 @@ import axios from 'axios'
 import '../App.css'
 
 
-const handleSubmit = e => {
-    e.preventDefault()
-    //post to the backend
-}
-
 const schema = yup.object().shape({
     email: yup
         .string()
@@ -33,6 +28,17 @@ const SignIn = () => {
         email: "",
         password: "",
     })
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        const userData = {email: formData.email.trim(), password: formData.password}
+    //     axios.post("/", userData)
+    //         .then(res => {
+    //             //do something with res
+    //             setFormData({email: "", password: ""})
+    //         })
+    //         .catch( err => console.log(err.message))
+    }
 
     const handleFormError = (name, value) => {
         yup.reach(schema, name).validate(value)
