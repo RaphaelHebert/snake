@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 
 
 import ScoreBar from '../ScoreBar'
@@ -90,7 +90,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
         }
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const bodySearch = 'o' + body.join('o').toString() + 'o'
         console.log(bodySearch)
         const headCheck = "o" + [head[0] + '%', head[1] + '%'].toString() + "o"
@@ -99,6 +99,8 @@ const Snake = ({ apple, applePos, loose, score }) => {
             setPlay(false)
             loose();
         }
+        let unmounted = false
+        !unmounted &&
         setTimeout(() => {
             const storage = window.localStorage.getItem("snakeRunner")
             const newDirection = JSON.parse(storage)
@@ -116,7 +118,8 @@ const Snake = ({ apple, applePos, loose, score }) => {
                 setDirection(newDirection.direction);
                 headPos(newDirection.direction);
             }   
-        }, speed)
+        } 
+        , speed); return () => {unmounted = true}
     }, [head])
 
     return(
