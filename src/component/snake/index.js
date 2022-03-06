@@ -99,23 +99,28 @@ const Snake = ({ apple, applePos, loose, score }) => {
             setPlay(false)
             loose();
         }
-        setTimeout(() => {
-            const storage = window.localStorage.getItem("snakeRunner")
-            const newDirection = JSON.parse(storage)
-            if(play && ["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(newDirection.direction)){
-                if(head[0] === apple[0] && head[1] === apple[1]){
-                    setBody([[headTop, headLeft], ...body])
-                    applePos()
-                } else {
-                    if(body.length > 0){
-                        const newBody = body.slice(0, body.length - 1)
-                        newBody.unshift([headTop, headLeft])
-                        setBody(newBody)
+        let unmounted = false
+       
+        const timer = setTimeout(() => {
+            if(!unmounted){
+                const storage = window.localStorage.getItem("snakeRunner")
+                const newDirection = JSON.parse(storage)
+                if(play && ["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(newDirection.direction)){
+                    if(head[0] === apple[0] && head[1] === apple[1]){
+                        setBody([[headTop, headLeft], ...body])
+                        applePos()
+                    } else {
+                        if(body.length > 0){
+                            const newBody = body.slice(0, body.length - 1)
+                            newBody.unshift([headTop, headLeft])
+                            setBody(newBody)
+                        }
                     }
-                }
-                setDirection(newDirection.direction);
-                headPos(newDirection.direction);
-            }   
+                    setDirection(newDirection.direction);
+                    headPos(newDirection.direction);
+                }   
+            }
+            return () => {unmounted = true; clearTimeout(timer)}
         } 
         , speed);
     }, [head])
