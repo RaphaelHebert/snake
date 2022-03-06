@@ -99,9 +99,10 @@ const Snake = ({ apple, applePos, loose, score }) => {
             setPlay(false)
             loose();
         }
+
         let unmounted = false
        
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             if(!unmounted){
                 const storage = window.localStorage.getItem("snakeRunner")
                 const newDirection = JSON.parse(storage)
@@ -120,7 +121,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
                     headPos(newDirection.direction);
                 }   
             }
-            return () => {unmounted = true;}
+            return () => {unmounted = true}
         } 
         , speed);
     }, [head])
