@@ -86,7 +86,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
     const clickPlay = () => {
         if(!play){
             setPlay(!play);
-            setHead([head[0], head[1]])
+            setHead([head[0], head[1] + 2])
         }
     }
 
