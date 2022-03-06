@@ -24,9 +24,23 @@ fieldset {
   padding-bottom: 5vh;
 }
 
+form {
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 3vh 3vw;
+}
+
 form p{
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   color: red;
+}
+
+input{
+  background: rgba(100, 164, 204, 0.2);
+  border-radius: 1.3vw;
+  font-family: 'lato';
+  margin-left: 4%;
+  padding: 2%;
 }
 
 h1 {
@@ -78,6 +92,23 @@ classes
   justify-content: space-evenly;
   align-items: stretch;
   align-content: stretch
+}
+
+.formLabels {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.formLabels label, .formLabels input{
+  text-align: left;
+  width: 100%;
+}
+
+.formLabels input{
+  width: 80%;
 }
 
 .head {
@@ -161,11 +192,43 @@ classes
 }
 
 .startButtonDisabled{
-  opacity: 50%;
   background: lightseagreen;
   border-radius: 3px;
   border: solid 3px grey;
   padding: 1.5vw;
 }
 
+.signForms{
+  width: 23%;
+}
 
+.signButton {
+  align-self: center;
+  color: black;
+  background: lightseagreen;
+  border-radius: 10px;
+  border: solid 3px black;
+  padding: 1.3vh 4vw;
+}
+
+.signButton:disabled {
+  opacity: 80%;
+  color: grey;
+  border-color:grey;
+}
+
+.signButton:hover:disabled {
+  align-self: center;
+  background: lightseagreen;
+  border-radius: 10px;
+  border: solid 3px grey;
+  color: grey;
+  opacity: 50%;
+}
+
+.signButton:hover:enabled {
+  border: solid 3px lightseagreen;
+  background: lightgrey;
+  color: lightseagreen;
+  cursor: pointer;
+}

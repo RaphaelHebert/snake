@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import axios from 'axios'
 
+import '../App.css'
+
 
 const handleSubmit = e => {
     e.preventDefault()
@@ -82,24 +84,24 @@ const RegisterForm = () => {
         <div className="flexColCenter">
             <h2> Sign up!</h2>
             <p> Sign up to be able to login and compete with the other players</p>
-            <form onSubmit={handleSubmit}>
-                <label> Username: 
+            <form className="formLabels signForms" onSubmit={handleSubmit}>
+                <label className="formLabels"> Username: 
                     <input name='uname' onChange={handleChange} value={formData.uname} type="text" maxlength="24"/>
                     <p>{formErrors.uname}</p>
                 </label>
-                <label> email: 
+                <label className="formLabels"> email: 
                     <input name='email' onChange={handleChange} value={formData.email} type="email" maxlength="255"/>
                     <p>{formErrors.email}</p>
                 </label>
-                <label> Password: 
+                <label className="formLabels"> Password: 
                     <input name='password' onChange={handleChange} value={formData.password} type="password" />
                     <p>{formErrors.password}</p>
                 </label>
-                <label> Password confirmation: 
+                <label className="formLabels"> Password confirmation: 
                     <input name='passwordConfirmation' onChange={handleChange} value={formData.passwordConfirmation} type="password" />
                     <p>{formErrors.passwordConfirmation}</p>
                 </label>
-                <button className="startButton" type="submit" disabled={disable}>Register !</button>
+                <button className="signButton" type="submit" disabled={disable}>Register !</button>
             </form>
         </div>
     )

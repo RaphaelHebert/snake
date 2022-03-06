@@ -8,7 +8,7 @@ const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
         <form className="flexColCenter" onSubmit={handleSubmit}>
             <label> <span>Speed :</span>
                 <fieldset id="speed" onChange={handleChange} disabled={play}>
-                    <label> Hard
+                    <label > Hard
                         <input type="radio" value="50" name="speed" checked={speed===50}/>
                     </label>
                     <label> Medium
