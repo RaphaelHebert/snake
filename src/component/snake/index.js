@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 import ScoreBar from '../ScoreBar'
@@ -125,6 +126,8 @@ const Snake = ({ apple, applePos, loose, score }) => {
                 <h1>The Snake</h1>
                 <p>This is the snake, you know the rules...
                 Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
+                <p>Connect to your account to save your score and eventually appear on the top players list: 
+                <span><Link to="/SignIn" style={{textDecoration: 'none'}}> Go to the login page</Link></span></p>
                 <SnakeForm handleChange={handleChange} speed={speed} play={play} clickPlay={clickPlay}/>
                 <ScoreBar score={score >= 0? score: 0} />
             </div>

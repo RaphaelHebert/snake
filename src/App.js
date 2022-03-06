@@ -6,6 +6,7 @@ import './App.css';
 import Snake from './component/snake'
 import Lost from './component/Lost'
 import RegisterForm from './component/RegisterForm';
+import SignIn from './component/SignIn';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost} score={score}/>
       </>}/>
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/SignIn" element={<SignIn />} />
     </Routes>
     </>
   );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import axios from 'axios'
 
@@ -86,11 +87,11 @@ const RegisterForm = () => {
             <p> Sign up to be able to login and compete with the other players</p>
             <form className="formLabels signForms" onSubmit={handleSubmit}>
                 <label className="formLabels"> Username: 
-                    <input name='uname' onChange={handleChange} value={formData.uname} type="text" maxlength="24"/>
+                    <input name='uname' onChange={handleChange} value={formData.uname} type="text" maxLength="24"/>
                     <p>{formErrors.uname}</p>
                 </label>
                 <label className="formLabels"> email: 
-                    <input name='email' onChange={handleChange} value={formData.email} type="email" maxlength="255"/>
+                    <input name='email' onChange={handleChange} value={formData.email} type="email" maxLength="255"/>
                     <p>{formErrors.email}</p>
                 </label>
                 <label className="formLabels"> Password: 
@@ -103,6 +104,8 @@ const RegisterForm = () => {
                 </label>
                 <button className="signButton" type="submit" disabled={disable}>Register !</button>
             </form>
+            <p> Already have an account? Sign in <span><Link to="/SignIn" style={{textDecoration: 'none'}}>Here</Link></span></p>
+
         </div>
     )
 }

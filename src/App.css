@@ -20,8 +20,19 @@ button:hover{
 }
 
 fieldset {
+  display: flex;
+  flex-flow: row nowrap;
   border: none;
-  padding-bottom: 5vh;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+fieldset label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%
 }
 
 form {
@@ -84,6 +95,7 @@ classes
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  width: 60%;
 }
 
 .formButtons {
