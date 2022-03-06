@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import './App.css';
+import { axiosWithAuth } from './auth/axiosAuth.js';
 
 import Snake from './component/snake'
 import Lost from './component/Lost'
 import RegisterForm from './component/RegisterForm';
 import SignIn from './component/SignIn';
+
+import './App.css';
 
 
 function App() {
@@ -15,7 +17,11 @@ function App() {
   const [lost, setLost] = useState(false)
 
   const loose = () => {
+    //const finalScore = {userId: id, score: score}
     setLost(true)
+    // etc
+    //get the user id
+    //axiosWithAuth().put(`endpoint/path/here/${id}`, finalScore).then(data => /* do something with the data */);
   }
 
   const applePos = () => {

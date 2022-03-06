@@ -87,15 +87,13 @@ const Snake = ({ apple, applePos, loose, score }) => {
     const clickPlay = () => {
         if(!play){
             setPlay(!play);
-            setHead([head[0], head[1]])
+            setHead([head[0], head[1] + 2])
         }
     }
 
     useEffect(() => {
         const bodySearch = 'o' + body.join('o').toString() + 'o'
-        console.log(bodySearch)
         const headCheck = "o" + [head[0] + '%', head[1] + '%'].toString() + "o"
-        console.log(headCheck)
         if(bodySearch.includes(headCheck)){
             setPlay(false)
             loose();

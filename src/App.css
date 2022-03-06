@@ -160,6 +160,16 @@ classes
   width: 100%;
 }
 
+/* @media only screen and (max-width: 600px) {
+  .main {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+} */
+
 .scoreBar {
   border: solid 3px green;
   background: lightgray;

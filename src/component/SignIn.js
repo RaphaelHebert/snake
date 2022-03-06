@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import axios from 'axios'
 
@@ -29,12 +29,15 @@ const SignIn = () => {
         password: "",
     })
 
+    const navigate = useNavigate()
+
     const handleSubmit = e => {
         e.preventDefault()
         const userData = {email: formData.email.trim(), password: formData.password}
     //     axios.post("/", userData)
     //         .then(res => {
-    //             //do something with res
+    //             localStorage.setItem('token', res.data.token);
+    //             navigate('/');
     //             setFormData({email: "", password: ""})
     //         })
     //         .catch( err => console.log(err.message))
