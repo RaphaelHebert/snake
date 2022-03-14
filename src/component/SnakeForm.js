@@ -18,11 +18,6 @@ const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
                         <input type="radio" value="400" name="speed" checked={speed===400}/>
                     </label>
                 </fieldset>
-           
-            <div className="main formButtons">
-                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}><span>Play !</span></div>
-                <button onClick={() => window.location.reload()}>Reset</button>
-            </div>
         </form>
     )
 }

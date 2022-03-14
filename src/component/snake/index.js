@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 import ScoreBar from '../ScoreBar'
@@ -8,12 +8,13 @@ import '../../App.css'
 
 
 
-const Snake = ({ apple, applePos, loose, score }) => {
+const Snake = ({ apple, applePos, loose, score, speed }) => {
     const [head, setHead] = useState([48, 48]) //top, left
     const [play, setPlay] = useState(false)
     const [body, setBody] = useState([])
     const [direction, setDirection] = useState('ArrowRight') //setup for starts and checks snake does go in unauthorized direction
-    const [speed, setSpeed] = useState(200)
+
+    const navigate = useNavigate()
 
     const appleTop = apple[0] + '%'
     const appleLeft = apple[1] +  '%'
@@ -22,10 +23,7 @@ const Snake = ({ apple, applePos, loose, score }) => {
     const headLeft = head[1] + '%'
 
     //handle options form
-    const handleChange = e => {
-        setSpeed(parseInt(e.target.value))
-    }
-
+    
     const headPos = (direction) => {
         switch(direction){
           case "ArrowRight":
@@ -122,11 +120,12 @@ const Snake = ({ apple, applePos, loose, score }) => {
         <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
             <div className="flexColCenter sideDiv">
                 <h1>The Snake</h1>
-                <p>This is the snake, you know the rules...
-                Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
-                <p>Connect to your account to save your score and eventually appear on the top players list: 
-                <span><Link to="/SignIn" style={{textDecoration: 'none'}}> Go to the login page</Link></span></p>
-                <SnakeForm handleChange={handleChange} speed={speed} play={play} clickPlay={clickPlay}/>
+                <p>Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
+                <div className="main formButtons">
+                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}><span>Play !</span></div>
+                <button onClick={() => window.location.reload()}>Reset</button>
+            </div>
+                
                 <ScoreBar score={score >= 0? score: 0} />
             </div>
             <div className='container'>

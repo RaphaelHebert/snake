@@ -91,6 +91,10 @@ classes
   position: relative;
 }
 
+.displayNone{
+  display: none;
+}
+
 .flexColCenter {
   display: flex;
   flex-flow: column nowrap;
@@ -158,6 +162,17 @@ classes
   flex-flow: row nowrap;
   justify-content: space-around;
   width: 100%;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background: lightgray;
+  padding: 1.5vh;
+  border-bottom: 2px solid black;
+
+
 }
 
 /* @media only screen and (max-width: 600px) {
