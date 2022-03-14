@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import axios from 'axios'
 
 import '../App.css'
 
+import API_URL from '../config.js'
 
 const schema = yup.object().shape({
     uname: yup
@@ -41,21 +42,28 @@ const RegisterForm = () => {
     const[disable, setDisable]= useState(true)
     const[formData, setFormData] = useState(baseForm)
     const[formErrors, setFormErrors] = useState(baseForm)
+    const[registrationError, setRegistrationError] = useState(null)
+
+    const nav = useNavigate()
 
     const handleSubmit = e => {
         e.preventDefault()
         const newUser = {
-            uname: formData.uname.trim(),
+            username: formData.uname.trim(),
             email: formData.email.trim(),
             password: formData.password,
-            passwordConfirmation: formData.passwordConfirmation
         }
-        //     axios.post("/", newUser)
-        //         .then(res => {
-        //             //do something with res
-        //             setFormData(baseForm)
-        //         })
-        //         .catch( err => console.log(err.message))
+            axios.post(API_URL + "auth/signUp", newUser)
+                .then(res => {
+                    setFormData(baseForm)
+                    setRegistrationError(null)
+                    console.log(res.message)
+                    nav('/SignIn',  { replace: true })
+                })
+                .catch(err => {
+                    setFormData(baseForm)
+                    setRegistrationError(`An error occurred during the registration process: \n ${err.message}. \nPlease try again later.`)
+                })
     }
     
 
@@ -93,6 +101,7 @@ const RegisterForm = () => {
         <div className="flexColCenter">
             <h2> Sign up!</h2>
             <p> Sign up to be able to login and compete with the other players</p>
+            {registrationError && <p className="errorMessage"> {registrationError} </p>}
             <form className="formLabels signForms" onSubmit={handleSubmit}>
                 <label className="formLabels"> Username: 
                     <input name='uname' onChange={handleChange} value={formData.uname} type="text" maxLength="24"/>
@@ -113,7 +122,6 @@ const RegisterForm = () => {
                 <button className="signButton" type="submit" disabled={disable}>Register !</button>
             </form>
             <p> Already have an account? Sign in <span><Link to="/SignIn" style={{textDecoration: 'none'}}>Here</Link></span></p>
-
         </div>
     )
 }

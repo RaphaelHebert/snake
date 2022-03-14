@@ -5,13 +5,14 @@ import axios from 'axios'
 
 import '../App.css'
 
+import API_URL from '../config.js'
+
 
 const schema = yup.object().shape({
-    email: yup
+    username: yup
         .string()
-        .email('Must be a valid email')
         .max(255)
-        .required('Email is required'),
+        .required('username is required'),
     password: yup
         .string()
         .required('Please Enter your password')
@@ -19,13 +20,14 @@ const schema = yup.object().shape({
 
 const SignIn = () => {
     const[disable, setDisable]= useState(true)
+    const[loginError, setLoginError] = useState(null)
     const[formData, setFormData] = useState({
-        email: "",
+        username: "",
         password: "",
     })
 
     const[formErrors, setFormErrors] = useState({
-        email: "",
+        username: "",
         password: "",
     })
 
@@ -33,14 +35,20 @@ const SignIn = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        const userData = {email: formData.email.trim(), password: formData.password}
-    //     axios.post("/", userData)
-    //         .then(res => {
-    //             localStorage.setItem('token', res.data.token);
-    //             navigate('/');
-    //             setFormData({email: "", password: ""})
-    //         })
-    //         .catch( err => console.log(err.message))
+
+        const userData = {username: formData.username.trim(), password: formData.password}
+
+        axios.post(API_URL + "auth/signIn", userData)
+            .then(res => {
+                localStorage.setItem('token', res.data.token);
+                setFormData({username: "", password: ""});
+                setLoginError(null);
+                navigate('/');
+            })
+            .catch(err => {
+                setFormData({username: "", password: ""})
+                setLoginError(err.message)
+            })
     }
 
     const handleFormError = (name, value) => {
@@ -78,10 +86,11 @@ const SignIn = () => {
             <h2> Sign up!</h2>
             <p> Sign in to your account</p>
             <p> No account? Create one <span><Link to="/register" style={{textDecoration: 'none'}}>Here</Link></span></p>
+            {loginError && <p className="errorMessage"> {`An error occurred while logging in: ${loginError}`}</p>}
             <form className="formLabels signForms" onSubmit={handleSubmit}>
-                <label className="formLabels"> email: 
-                    <input name='email' onChange={handleChange} value={formData.email} type="email" maxLength="255"/>
-                    <p>{formErrors.email}</p>
+                <label className="formLabels"> username: 
+                    <input name='username' onChange={handleChange} value={formData.username} type="text" maxLength="255"/>
+                    <p>{formErrors.username}</p>
                 </label>
                 <label className="formLabels"> Password: 
                     <input name='password' onChange={handleChange} value={formData.password} type="password" />
