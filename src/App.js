@@ -8,7 +8,8 @@ import Lost from './component/Lost'
 import RegisterForm from './component/RegisterForm';
 import SignIn from './component/SignIn';
 import Navbar from './component/Navbar';
-import Option from './component/Option'
+import Option from './component/Option';
+import Scores from './component/Scores';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
   const [apple, setApple] = useState([0,0])
   const [score, setScore] = useState(-1)
   const [lost, setLost] = useState(false)
-  const [loggedIn, setLoggedIN] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [speed, setSpeed] = useState(200)
 
   const loose = () => {
@@ -46,14 +47,15 @@ function App() {
     <Routes>
       <Route path="/" element={
         <>
-          <Navbar loggedIn={loggedIn}/>
+          <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           {lost && <Lost score={score}/>}
           <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost} score={score} speed={speed}/>
         </>
       }/>
         <Route path="/Option" element={<Option setSpeed={setSpeed} speed={speed}/>} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/SignIn" element={<SignIn setLoggedIn={setLoggedIn}/>} />
+        <Route path="/Scores" element={<Scores loggedIn={loggedIn}/>} />
     </Routes>
     </>
   );

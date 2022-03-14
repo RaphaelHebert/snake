@@ -18,7 +18,7 @@ const schema = yup.object().shape({
         .required('Please Enter your password')
 })
 
-const SignIn = () => {
+const SignIn = ({ setLoggedIn }) => {
     const[disable, setDisable]= useState(true)
     const[loginError, setLoginError] = useState(null)
     const[formData, setFormData] = useState({
@@ -43,6 +43,7 @@ const SignIn = () => {
                 localStorage.setItem('token', res.data.token);
                 setFormData({username: "", password: ""});
                 setLoginError(null);
+                setLoggedIn(true);
                 navigate('/');
             })
             .catch(err => {
