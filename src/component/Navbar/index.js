@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = ({ loggedIn, setLoggedIn }) => {
     const nav = useNavigate()
-    
+
+    const { pathname } = useLocation()
 
     const logout = () => {
         localStorage.removeItem('token');
@@ -13,8 +13,13 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     return(
         <div className="navbar">
             <div className="subNavBar">
-                <button className="startButton" onClick={()=> nav('./Option')}>Options</button>
-                <button className="startButton" onClick={()=> nav('./Scores')}>Scores</button>
+            {pathname !== "/"?
+                <button className="startButton" onClick={()=> nav('/')}>Home</button>:
+                <>
+                    <button className="startButton" onClick={()=> nav('./Option')}>Options</button>
+                    <button className="startButton" onClick={()=> nav('./Scores')}>Scores</button>
+                </>
+            }
             </div>
             {loggedIn? 
                 <button className="startButton" onClick={() => logout()}>Logout</button>:

@@ -55,25 +55,25 @@ function App() {
     let token = localStorage.getItem("token")
 
     if(token){
-      token = jwt_decode(token)
+      //token = jwt_decode(token)
       setLoggedIn(true)
     }
   }, [])
 
   return (
     <>
+    <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
     <Routes>
       <Route path="/" element={
         <>
-          <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           {lost && <Lost score={score} />}
           <Snake apple={apple} applePos={applePos} score={score >= 0? score: 0} loose={loose} lost={lost} setLost={setLost} score={score} setScore={setScore} speed={speed} setApple={setApple}/>
         </>
       }/>
-        <Route path="/Option" element={<Option setSpeed={setSpeed} speed={speed}/>} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/SignIn" element={<SignIn setLoggedIn={setLoggedIn}/>} />
-        <Route path="/Scores" element={<Scores loggedIn={loggedIn}/>} />
+      <Route path="/Option" element={<Option setSpeed={setSpeed} speed={speed}/>} />
+      <Route path="/register" element={<RegisterForm />} />
+      <Route path="/SignIn" element={<SignIn setLoggedIn={setLoggedIn}/>} />
+      <Route path="/Scores" element={<Scores loggedIn={loggedIn} />} />
     </Routes>
     </>
   );

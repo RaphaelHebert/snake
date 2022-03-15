@@ -105,6 +105,7 @@ classes
   flex-flow: column nowrap;
   align-items: center;
   width: 60%;
+  margin: auto;
 }
 
 .formButtons {
@@ -273,4 +274,19 @@ classes
   background: lightgrey;
   color: lightseagreen;
   cursor: pointer;
+}
+
+.tableBox {
+  padding: 5%
+}
+
+.tableBox td,  .tableBox td{
+  padding: 5px 5px 5px 25px;
+  border: 2px solid lightgray;
+  border-right: none;
+}
+
+.tableBox td:last-of-type,  .tableBox td:last-of-type{
+  padding: 5px 5px 5px 25px;
+  border-right: 2px solid lightgray;
 }
