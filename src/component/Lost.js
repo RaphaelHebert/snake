@@ -1,8 +1,6 @@
-
 const Lost = ({ score }) => {
-
+    
     const handleClick = () => {
-        console.log('hello')
         window.location.reload();
     }   
 

@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
-
+import Lost from '../Lost'
 import ScoreBar from '../ScoreBar'
-import SnakeForm from '../SnakeForm'
 import '../../App.css'
 
 
 
-const Snake = ({ apple, applePos, loose, score, speed }) => {
+const Snake = ({ apple, applePos, loose, score, speed, lost}) => {
     const [head, setHead] = useState([48, 48]) //top, left
     const [play, setPlay] = useState(false)
     const [body, setBody] = useState([])
     const [direction, setDirection] = useState('ArrowRight') //setup for starts and checks snake does go in unauthorized direction
-
-    const navigate = useNavigate()
 
     const appleTop = apple[0] + '%'
     const appleLeft = apple[1] +  '%'
@@ -74,12 +70,6 @@ const Snake = ({ apple, applePos, loose, score, speed }) => {
         if(["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowDown"].includes(e.key)){
             window.localStorage.setItem("snakeRunner", JSON.stringify({'direction': e.key}))
         }
-        // else if(e.key === "Enter"){
-        //     if(!play){
-        //         setPlay(!play);
-        //         setHead([head[0], head[1]])
-        //     }
-        // }
     }
 
     const clickPlay = () => {
@@ -96,6 +86,7 @@ const Snake = ({ apple, applePos, loose, score, speed }) => {
             setPlay(false)
             loose();
         }
+
         setTimeout(() => {
             const storage = window.localStorage.getItem("snakeRunner")
             const newDirection = JSON.parse(storage)

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { axiosWithAuth } from '../../auth/axiosAuth'
 
@@ -7,6 +8,7 @@ import API_URL from '../../config'
 const Scores = ({ loggedIn }) => {
 
     const [topTen, setTopTen ] = useState([])
+    const nav = useNavigate()
 
     useEffect(() => {
         axiosWithAuth().get(API_URL + "scores/topTen/snake")
@@ -46,6 +48,7 @@ const Scores = ({ loggedIn }) => {
             </div>
             :<div className="errorMessage">You must be logged in!!</div>
         }
+        <button className="startButton" onClick={() => nav('/')}>Back to home page</button>
         </>
     )
 }
