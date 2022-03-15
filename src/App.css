@@ -4,6 +4,7 @@ body {
   font-size: 1.8vw;
 }
 
+
 button {
   background: lightcoral;
   border-radius: 5px;
@@ -277,10 +278,15 @@ classes
 }
 
 .tableBox {
-  padding: 5%
+  padding: 5%;
+  align-content: center;
 }
 
-.tableBox td,  .tableBox td{
+.tableBox h2{
+  text-align: center;
+}
+
+/* .tableBox td,  .tableBox td{
   padding: 5px 5px 5px 25px;
   border: 2px solid lightgray;
   border-right: none;
@@ -289,4 +295,38 @@ classes
 .tableBox td:last-of-type,  .tableBox td:last-of-type{
   padding: 5px 5px 5px 25px;
   border-right: 2px solid lightgray;
+} */
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th {
+  padding: 0 2vw;
+}
+
+thead {
+  color: white;
+  background: rgb(65, 64, 64);
+  border-bottom: 3px solid black;
+}
+
+tr {
+  border-bottom: 2px dashed black;
+}
+
+tr:last-child{
+  border-bottom: none;
+}
+
+td {
+  padding: 0 2vw;
+}
+
+.oddRow {
+  background: lightblue
+}
+.evenRow{
+  background: lightgray;
 }

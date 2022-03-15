@@ -14,6 +14,10 @@ const Scores = ({ loggedIn }) => {
 
     const nav = useNavigate()
 
+    const dateParser = (date) => {
+        return date.split('T')[0].split('-').reverse().join('/')
+    }
+
     useEffect(() => {
         axios.get(API_URL + "scores/topTen/snake")
             .then(res => {
@@ -41,16 +45,18 @@ const Scores = ({ loggedIn }) => {
                         <th>Rank</th>
                         <th>Player</th>
                         <th>score</th>
+                        <th>date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         topTen.map((player, index) => {
                             return (
-                                <tr>
+                                <tr className={index%2===0? "evenRow":"oddRow"}>
                                     <td>{index + 1}</td>
                                     <td>{player.username}</td>
                                     <td>{player.score}</td>
+                                    <td>{dateParser(player.created_at)}</td>
                                 </tr>
                             )
                         })
@@ -64,15 +70,19 @@ const Scores = ({ loggedIn }) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>scores</th>
+                            <th>score</th>
+                            <th>date</th>
                         </tr>
                     </thead>
                     { loggedIn?
                         <tbody>
                             {
-                                userScores.map( player => {
+                                userScores.map( (player, index) => {
                                     return (
-                                        <tr> <td> {player.score} </td> </tr>
+                                        <tr className={index%2===0? "evenRow":"oddRow"}> 
+                                        <td> {player.score} </td> 
+                                        <td>{dateParser(player.created_at)}</td>
+                                        </tr>
                                     )
                                 })
                             }

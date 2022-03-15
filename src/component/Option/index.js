@@ -10,10 +10,9 @@ const Option = ({setSpeed, speed}) => {
     }
 
     return(
-        <>
-        <SnakeForm handleChange={handleChange} speed={speed}/>
-        <button onClick={() => nav("/")}> play </button>
-        </>
+        <div className="flexColCenter tableBox">
+            <SnakeForm handleChange={handleChange} speed={speed}/>
+        </div>
 
     )
 }
