@@ -17,7 +17,7 @@ const Scores = ({ loggedIn }) => {
     useEffect(() => {
         axios.get(API_URL + "scores/topTen/snake")
             .then(res => {
-                setTopTen(res.data)
+                setTopTen(res.data.reverse())
             })
             .catch(err => {
                 setTopTen([{username: "no player available", score: 0}])
@@ -38,15 +38,17 @@ const Scores = ({ loggedIn }) => {
                 <table>
                 <thead>
                     <tr>
+                        <th>Rank</th>
                         <th>Player</th>
                         <th>score</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        topTen.map( player => {
+                        topTen.map((player, index) => {
                             return (
                                 <tr>
+                                    <td>{index + 1}</td>
                                     <td>{player.username}</td>
                                     <td>{player.score}</td>
                                 </tr>
@@ -57,12 +59,12 @@ const Scores = ({ loggedIn }) => {
                 </table>
             </div>
             
-            <div>
+            <div className="tableBox">
                 <h2>My Scores</h2>
                 <table>
                     <thead>
                         <tr>
-                        <th>scores</th>
+                            <th>scores</th>
                         </tr>
                     </thead>
                     { loggedIn?
