@@ -108,24 +108,22 @@ const Snake = ({ apple, applePos, loose, score, speed, lost}) => {
     }, [head])
 
     return(
-        <div className='main' onKeyDown={handleKeyDown} tabIndex="0">
-            <div className="flexColCenter sideDiv">
+        <div className='flexRowNoWrap main' onKeyDown={handleKeyDown} tabIndex="0">
+            <div className="flexColNoWrap center sideDiv">
                 <h1>The Snake</h1>
                 <p>Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
-                <div className="main">
-                <button className={play? "startButton disabled": "startButton"} onClick={clickPlay} disabled={play}>Play !</button>
-                <button className="resetButton" onClick={() => window.location.reload()}>Reset</button>
-            </div>
-                
+                <div className="flexRowNoWrap main">
+                    <button className={play? "startButton disabled": "startButton"} onClick={clickPlay} disabled={play}>Play !</button>
+                    <button className="resetButton" onClick={() => window.location.reload()}>Reset</button>
+                </div>
                 <ScoreBar score={score >= 0? score: 0} />
             </div>
             <div className='container'>
                 <div className='screen'>
-                    <div className="apple" style={{top: appleTop, left: appleLeft }} />
-                    <div className="head" style={{top: headTop, left: headLeft }}/>
+                    <div className="gameElement apple" style={{top: appleTop, left: appleLeft }} />
+                    <div className="gameElement head" style={{top: headTop, left: headLeft }}/>
                     { body.length > 0 && body.map(bodyPart => 
-                            <div className="bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
-
+                            <div className="gameElement bodyPart" style={{top: bodyPart[0], left: bodyPart[1] }}/>
                     )}
                 </div>
             </div>

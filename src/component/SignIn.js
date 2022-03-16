@@ -82,7 +82,7 @@ const SignIn = ({ setLoggedIn }) => {
     }, [formData])
 
     return(
-        <div className="flexColCenter">
+        <div className="flexColNoWrap center">
             <h2> Sign up!</h2>
             <p> Sign in to your account</p>
             <p> No account? Create one <span><Link to="/register" style={{textDecoration: 'none'}}>Here</Link></span></p>

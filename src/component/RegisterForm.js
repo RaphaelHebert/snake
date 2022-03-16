@@ -98,7 +98,7 @@ const RegisterForm = () => {
     }, [formData])
 
     return(
-        <div className="flexColCenter">
+        <div className="flexColNoWrap center">
             <h2> Sign up!</h2>
             <p> Sign up to be able to login and compete with the other players</p>
             {registrationError && <p className="errorMessage"> {registrationError} </p>}
