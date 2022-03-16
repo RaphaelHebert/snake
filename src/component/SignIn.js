@@ -7,7 +7,6 @@ import '../App.css'
 
 import API_URL from '../config.js'
 
-
 const schema = yup.object().shape({
     username: yup
         .string()
@@ -97,7 +96,7 @@ const SignIn = ({ setLoggedIn }) => {
                     <input name='password' onChange={handleChange} value={formData.password} type="password" />
                     <p>{formErrors.password}</p>
                 </label>
-                <button className="signButton" type="submit" disabled={disable}>Sign In !</button>
+                <button className={disable? "startButton disabled": "startButton"} type="submit" disabled={disable}>Sign In !</button>
             </form>
             <p> Go back to the <span><Link to="/" style={{textDecoration: 'none'}}>Main page</Link></span></p>
         </div>

@@ -1,24 +1,54 @@
-body {
-  font-family: 'Indie Flower';
-  text-align: justify;
-  font-size: 1.8vw;
-}
+/* 
+########################################################################
+
+buttons
+
+########################################################################
+*/
 
 
 button {
-  background: lightcoral;
-  border-radius: 5px;
+  border-radius: 8px;
   border: solid 3px grey;
   font-family: 'Permanent Marker';
   font-size: 2vw;
   padding: 1.5vw;
 }
 
-button:hover{
-  color: lightcoral;
+button:not(.disabled):hover{
   background: grey;
-  border: solid 3px lightcoral;
+  cursor: pointer;
 }
+
+.disabled {
+  border-color: lightgray;
+}
+
+.resetButton {
+  background: lightcoral;
+}
+
+.resetButton:hover {
+  border: solid 3px lightcoral;
+  color: lightcoral;
+}
+
+.startButton{
+  background: lightseagreen;
+}
+
+.startButton:not(.disabled):hover{
+  border: solid 3px lightseagreen;
+  color: lightseagreen;
+}
+
+/* 
+########################################################################
+
+elements
+
+########################################################################
+*/
 
 fieldset {
   display: flex;
@@ -109,13 +139,7 @@ classes
   margin: auto;
 }
 
-.formButtons {
-  width: 40vw;
-  display:flex; 
-  justify-content: space-evenly;
-  align-items: stretch;
-  align-content: stretch
-}
+
 
 .formLabels {
   display: flex;
@@ -151,17 +175,9 @@ classes
   z-index: 2;
 }
 
-.lost button {
-  border: solid 2px black;
-  padding: 2%;
-}
 
-.lost button:hover {
-  border: dashed 2px black;
-  color: red;
-  background: black;
-  padding: 2%;
-}
+
+
 
 .main {
   display: flex;
@@ -219,63 +235,13 @@ classes
   padding: 2% 5% 0% 2%;
 }
 
-.startButton{
-  background: lightseagreen;
-  border-radius: 3px;
-  border: solid 3px grey;
-  padding: 1.5vw;
-}
 
-.startButton:hover{
-  color: lightseagreen;
-  background: grey;
-  border-radius: 3px;
-  border: solid 3px lightseagreen;
-  cursor: pointer;
-  padding: 1.5vw;
-}
-
-.startButtonDisabled{
-  background: lightseagreen;
-  border-radius: 3px;
-  border: solid 3px grey;
-  padding: 1.5vw;
-}
 
 .signForms{
   width: 23%;
 }
 
-.signButton {
-  align-self: center;
-  color: black;
-  background: lightseagreen;
-  border-radius: 10px;
-  border: solid 3px black;
-  padding: 1.3vh 4vw;
-}
 
-.signButton:disabled {
-  opacity: 80%;
-  color: grey;
-  border-color:grey;
-}
-
-.signButton:hover:disabled {
-  align-self: center;
-  background: lightseagreen;
-  border-radius: 10px;
-  border: solid 3px grey;
-  color: grey;
-  opacity: 50%;
-}
-
-.signButton:hover:enabled {
-  border: solid 3px lightseagreen;
-  background: lightgrey;
-  color: lightseagreen;
-  cursor: pointer;
-}
 
 .tableBox {
   padding: 5%;

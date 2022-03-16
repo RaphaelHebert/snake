@@ -112,9 +112,9 @@ const Snake = ({ apple, applePos, loose, score, speed, lost}) => {
             <div className="flexColCenter sideDiv">
                 <h1>The Snake</h1>
                 <p>Press <span>Play !</span> to start playing and use the <span>arrow keys</span> on your keyboard to change the snake's direction.</p>
-                <div className="main formButtons">
-                <div className={play? "startButtonDisabled": "startButton"} onClick={clickPlay} disabled={play}><span>Play !</span></div>
-                <button onClick={() => window.location.reload()}>Reset</button>
+                <div className="main">
+                <button className={play? "startButton disabled": "startButton"} onClick={clickPlay} disabled={play}>Play !</button>
+                <button className="resetButton" onClick={() => window.location.reload()}>Reset</button>
             </div>
                 
                 <ScoreBar score={score >= 0? score: 0} />

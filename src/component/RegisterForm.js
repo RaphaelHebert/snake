@@ -119,7 +119,7 @@ const RegisterForm = () => {
                     <input name='passwordConfirmation' onChange={handleChange} value={formData.passwordConfirmation} type="password" />
                     <p>{formErrors.passwordConfirmation}</p>
                 </label>
-                <button className="signButton" type="submit" disabled={disable}>Register !</button>
+                <button className={disable? "startButton disabled":"startButton"} type="submit" disabled={disable}>Register !</button>
             </form>
             <p> Already have an account? Sign in <span><Link to="/SignIn" style={{textDecoration: 'none'}}>Here</Link></span></p>
         </div>
