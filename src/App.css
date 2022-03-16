@@ -1,24 +1,180 @@
-body {
-  font-family: 'Indie Flower';
-  text-align: justify;
-  font-size: 1.8vw;
-}
+/* 
+########################################################################
+
+buttons
+
+########################################################################
+*/
 
 
 button {
-  background: lightcoral;
-  border-radius: 5px;
+  border-radius: 8px;
   border: solid 3px grey;
   font-family: 'Permanent Marker';
   font-size: 2vw;
   padding: 1.5vw;
 }
 
-button:hover{
-  color: lightcoral;
+button:not(.disabled):hover{
   background: grey;
-  border: solid 3px lightcoral;
+  cursor: pointer;
 }
+
+.disabled {
+  border-color: lightgray;
+}
+
+.resetButton {
+  background: lightcoral;
+}
+
+.resetButton:hover {
+  border: solid 3px lightcoral;
+  color: lightcoral;
+}
+
+.startButton{
+  background: lightseagreen;
+}
+
+.startButton:not(.disabled):hover{
+  border: solid 3px lightseagreen;
+  color: lightseagreen;
+}
+
+/* 
+########################################################################
+
+flexbox
+
+########################################################################
+*/
+
+.flexRowNoWrap {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.flexColNoWrap {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.center{
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* 
+########################################################################
+
+containers
+
+########################################################################
+*/
+
+.sideDiv {
+  padding: 2% 5%;
+  width: 60%;
+}
+
+.main {
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.scoreBar {
+  border: solid 3px green;
+  border-radius: 8px;
+  background: lightgray;
+  font-family: 'Permanent Marker';
+  margin: 2% 5%;
+  text-align: center;
+  width: 50%;
+}
+
+.signForms{
+  width: 23%;
+}
+
+.tableBox {
+  padding: 5%;
+  align-content: center;
+}
+
+.container {
+  width: 50%;
+  padding-top: 50%;
+  position: relative;
+}
+
+/* 
+########################################################################
+
+navBar
+
+########################################################################
+*/
+
+.navbar {
+  justify-content: space-between;
+  background: lightgray;
+  padding: 1.5vh 1.5vw;
+  border-bottom: 2px solid black;
+}
+
+.subNavBar{
+  justify-content: space-between;
+  min-width:25%;
+}
+
+
+
+/* 
+########################################################################
+
+game elements
+
+########################################################################
+*/
+
+.gameElement {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+}
+
+.apple {
+  background: red;
+}
+
+.bodyPart {
+  background: green;
+}
+
+.head {
+  background: greenyellow;
+}
+
+.screen {
+  background: black;
+  box-sizing: content-box;
+  border: 3px solid grey;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/* 
+########################################################################
+
+forms
+
+########################################################################
+*/
 
 fieldset {
   display: flex;
@@ -55,68 +211,6 @@ input{
   padding: 2%;
 }
 
-h1 {
-  font-family: 'Permanent Marker';
-}
-
-span {
-  font-family: 'Permanent Marker';
-}
-
-
-/* 
-########################################################################
-
-classes
-
-########################################################################
-*/
-
-.apple {
-  position: absolute;
-  background: red;
-  width: 2%;
-  height: 2%;
-}
-
-.bodyPart {
-  position: absolute;
-  background: green;
-  width: 2%;
-  height: 2%;
-}
-
-.container {
-  width: 50%;
-  padding-top: 50%;
-  position: relative;
-}
-
-.displayNone{
-  display: none;
-}
-
-.errorMessage {
-  font-size: 1.5vw;
-  color: red;
-}
-
-.flexColCenter {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  width: 60%;
-  margin: auto;
-}
-
-.formButtons {
-  width: 40vw;
-  display:flex; 
-  justify-content: space-evenly;
-  align-items: stretch;
-  align-content: stretch
-}
-
 .formLabels {
   display: flex;
   flex-flow: column nowrap;
@@ -134,11 +228,32 @@ classes
   width: 80%;
 }
 
-.head {
-  position: absolute;
-  background: greenyellow;
-  width: 2%;
-  height: 2%;
+
+/* 
+########################################################################
+
+classes
+
+########################################################################
+*/
+
+h1, h2 {
+  font-family: 'Permanent Marker';
+  text-align: center;
+}
+
+span {
+  font-family: 'Permanent Marker';
+}
+
+
+.displayNone{
+  display: none;
+}
+
+.errorMessage {
+  font-size: 1.5vw;
+  color: red;
 }
 
 .lost {
@@ -151,37 +266,6 @@ classes
   z-index: 2;
 }
 
-.lost button {
-  border: solid 2px black;
-  padding: 2%;
-}
-
-.lost button:hover {
-  border: dashed 2px black;
-  color: red;
-  background: black;
-  padding: 2%;
-}
-
-.main {
-  display: flex;
-  align-items: flex-start;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  width: 100%;
-}
-
-.navbar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  background: lightgray;
-  padding: 1.5vh;
-  border-bottom: 2px solid black;
-
-
-}
-
 /* @media only screen and (max-width: 600px) {
   .main {
     display: flex;
@@ -192,110 +276,13 @@ classes
   }
 } */
 
-.scoreBar {
-  border: solid 3px green;
-  background: lightgray;
-  margin-top: 3vh;
-  width: 100%;
-}
+/* 
+########################################################################
 
-.screen {
-  background: black;
-  box-sizing: content-box;
-  border: 3px solid grey;
-  color: red;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
+tables
 
-.sideDiv{
-  justify-content: space-between;
-  height: inherit;
-  max-height: 100vh;
-  max-width: 50%;
-  padding: 2% 5% 0% 2%;
-}
-
-.startButton{
-  background: lightseagreen;
-  border-radius: 3px;
-  border: solid 3px grey;
-  padding: 1.5vw;
-}
-
-.startButton:hover{
-  color: lightseagreen;
-  background: grey;
-  border-radius: 3px;
-  border: solid 3px lightseagreen;
-  cursor: pointer;
-  padding: 1.5vw;
-}
-
-.startButtonDisabled{
-  background: lightseagreen;
-  border-radius: 3px;
-  border: solid 3px grey;
-  padding: 1.5vw;
-}
-
-.signForms{
-  width: 23%;
-}
-
-.signButton {
-  align-self: center;
-  color: black;
-  background: lightseagreen;
-  border-radius: 10px;
-  border: solid 3px black;
-  padding: 1.3vh 4vw;
-}
-
-.signButton:disabled {
-  opacity: 80%;
-  color: grey;
-  border-color:grey;
-}
-
-.signButton:hover:disabled {
-  align-self: center;
-  background: lightseagreen;
-  border-radius: 10px;
-  border: solid 3px grey;
-  color: grey;
-  opacity: 50%;
-}
-
-.signButton:hover:enabled {
-  border: solid 3px lightseagreen;
-  background: lightgrey;
-  color: lightseagreen;
-  cursor: pointer;
-}
-
-.tableBox {
-  padding: 5%;
-  align-content: center;
-}
-
-.tableBox h2{
-  text-align: center;
-}
-
-/* .tableBox td,  .tableBox td{
-  padding: 5px 5px 5px 25px;
-  border: 2px solid lightgray;
-  border-right: none;
-}
-
-.tableBox td:last-of-type,  .tableBox td:last-of-type{
-  padding: 5px 5px 5px 25px;
-  border-right: 2px solid lightgray;
-} */
+########################################################################
+*/
 
 table {
   border-collapse: collapse;

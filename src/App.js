@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 import { axiosWithAuth } from './auth/axiosAuth.js';
 
-import Snake from './component/snake'
+import Snake from './component/Snake'
 import Lost from './component/Lost'
 import RegisterForm from './component/RegisterForm';
 import SignIn from './component/SignIn';

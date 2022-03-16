@@ -11,8 +11,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     }
 
     return(
-        <div className="navbar">
-            <div className="subNavBar">
+        <div className="flexRowNoWrap navbar">
+            <div className="flexRowNoWrap subNavBar">
             {pathname !== "/"?
                 <button className="startButton" onClick={()=> nav('/')}>Home</button>:
                 <>

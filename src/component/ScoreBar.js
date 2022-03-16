@@ -2,8 +2,8 @@ import '../App.css'
 
 const ScoreBar = ({ score }) => {
     return(
-        <div className="scoreBar flexColCenter">
-            <p>Score: <span>{score}</span></p>
+        <div className="scoreBar">
+            <p>Score: {score}</p>
         </div>
     )
 }

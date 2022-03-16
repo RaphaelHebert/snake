@@ -36,7 +36,7 @@ const Scores = ({ loggedIn }) => {
             });
     }, [])
     return(
-        <div className="flexColCenter">
+        <div className="flexColNoWrap center">
             <div className="tableBox">
                 <h2>Top Ten</h2>
                 <table>
