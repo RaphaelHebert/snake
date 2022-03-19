@@ -37,6 +37,18 @@ button:not(.disabled):hover{
   background: lightseagreen;
 }
 
+.startDiv{
+  border-radius: 8px;
+  border: solid 3px grey;
+  font-family: 'Permanent Marker';
+  font-size: 2vw;
+  padding: 1.5vw;
+}
+.startDiv:not(.disabled):hover{
+  background: grey;
+  cursor: pointer;
+}
+
 .startButton:not(.disabled):hover{
   border: solid 3px lightseagreen;
   color: lightseagreen;
