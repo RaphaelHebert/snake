@@ -1,13 +1,18 @@
+import { connect } from "react-redux";
+import { setSpeed } from "../actions"
 
 const handleSubmit = e => {
     e.preventDefault()
 }
 
-const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
+const SnakeForm = ({ speed, play, setSpeed }) => {
+
+    console.log(speed, play, setSpeed)
+    
     return(
         <form className="flexColCenter" onSubmit={handleSubmit}>
             <span>Speed :</span>
-                <fieldset id="speed" onChange={handleChange} disabled={play}>
+                <fieldset id="speed" onChange={e => setSpeed(e.target.value)} disabled={play}>
                     <label > Hard
                         <input type="radio" value="50" name="speed" checked={speed===50}/>
                     </label>
@@ -21,4 +26,11 @@ const SnakeForm = ({handleChange, speed, play, clickPlay}) => {
         </form>
     )
 }
-export default SnakeForm;
+
+const MapStateToProps = state => {
+    return {
+        play: state.play,
+        speed: state.speed
+    }
+}
+export default connect(MapStateToProps, { setSpeed })(SnakeForm);

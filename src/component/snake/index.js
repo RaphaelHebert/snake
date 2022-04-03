@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ScoreBar from '../ScoreBar'
 import '../../App.css'
 
-import { reload, changeApple, changeDirection, setPlay, scoreUp } from "../../actions"
+import { reload, changeApple, changeDirection, setPlay, scoreUp, speed } from "../../actions"
 
 
 
@@ -68,6 +68,7 @@ const mapStateToProps = state => {
         direction: state.direction, 
         apple: state.apple,
         score: state.score,
+        speed: state.speed
     }
 }
 export default connect(mapStateToProps, { reload, changeApple, changeDirection, setPlay, scoreUp })(Snake);

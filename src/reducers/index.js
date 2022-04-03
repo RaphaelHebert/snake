@@ -3,6 +3,8 @@ import { CHANGE_APPLE } from '../actions'
 import { CHANGE_DIRECTION } from '../actions'
 import { PLAY } from '../actions'
 import { SCORE } from '../actions'
+import { SPEED } from '../actions'
+
 
 
 const initialState = {
@@ -11,7 +13,8 @@ const initialState = {
     body: [],
     direction: 'ArrowRight',
     apple: [0,0],
-    score: 0
+    score: 0,
+    speed: 200
 }
 
 export const snakeReducer = (state=initialState, action) => {
@@ -21,9 +24,13 @@ export const snakeReducer = (state=initialState, action) => {
 
     switch(type){
 
-        case SCORE:
+        case SPEED:
+            return{
+                ...state,
+                speed: payload - 0
+            }
 
-            console.log("SCORE UP")
+        case SCORE:
             return {
                 ...state,
                 score: state.score + payload

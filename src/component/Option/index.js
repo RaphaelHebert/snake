@@ -1,19 +1,11 @@
-import { useNavigate} from 'react-router-dom'
 
-import SnakeForm from "../SnakeForm"
+import SnakeForm from "../SnakeForm";
 
-const Option = ({setSpeed, speed}) => {
-    const nav = useNavigate()
-
-    const handleChange = e => {
-        setSpeed(parseInt(e.target.value))
-    }
-
+const Option = () => {
     return(
         <div className="flexColCenter tableBox">
-            <SnakeForm handleChange={handleChange} speed={speed}/>
+            <SnakeForm />
         </div>
-
     )
 }
 

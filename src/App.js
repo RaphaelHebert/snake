@@ -12,17 +12,16 @@ import Navbar from './component/Navbar';
 import Option from './component/Option';
 import Scores from './component/Scores';
 
+
 import API_URL from './config'
 
 import './App.css';
 
 
 function App() {
-  // const [apple, setApple] = useState([0,0])
-  // const [score, setScore] = useState(-1)
+  
   // const [lost, setLost] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
-  const [speed, setSpeed] = useState(200)
 
   // const loose = () => {
   //   //const finalScore = {userId: id, score: score}
@@ -39,26 +38,15 @@ function App() {
   //   setLost(true)
   // }
 
-  // const applePos = () => {
-  //   let top = Math.floor( Math.random() * 100 ).toString()
-  //   let left = Math.floor( Math.random() * 100 ).toString()
-  
-  //   top = top - (top % 2)
-  //   left = left - (left % 2)
-  //   console.log(`apple: ${top} ${left}`)
-  //   setApple([top, left])
-  //   setScore(score + 1)
-  // }
 
-  // useEffect(() => {
-  //   applePos()
-  //   let token = localStorage.getItem("token")
 
-  //   if(token){
-  //     //token = jwt_decode(token)
-  //     setLoggedIn(true)
-  //   }
-  // }, [])
+  useEffect(() => {
+    let token = localStorage.getItem("token")
+    if(token){
+      //token = jwt_decode(token)
+      setLoggedIn(true)
+    }
+  }, [])
 
   return (
     <>
@@ -67,10 +55,10 @@ function App() {
       <Route path="/" element={
         <>
         {/* //   {lost && <Lost score={score} />} */}
-          <Snake speed={speed} />
+          <Snake />
         </>
       }/>
-      <Route path="/Option" element={<Option setSpeed={setSpeed} speed={speed}/>} />
+      <Route path="/Option" element={<Option/>} />
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/SignIn" element={<SignIn setLoggedIn={setLoggedIn}/>} />
       <Route path="/Scores" element={<Scores loggedIn={loggedIn} />} />

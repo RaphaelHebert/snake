@@ -4,9 +4,18 @@ export const CHANGE_APPLE = "CHANGE_APPLE"
 export const CHANGE_DIRECTION = "CHANGE_DIRECTION"
 export const PLAY = "PLAY"
 export const SCORE = "SCORE"
+export const SPEED = "SPEED"
 
 
 //actions creators
+export const setSpeed = millisec => {
+    return{
+        type: SPEED,
+        payload: millisec
+    }
+    
+}
+
 export const scoreUp = () => {
     return {
         type: SCORE,
