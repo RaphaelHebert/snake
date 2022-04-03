@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import ScoreBar from '../ScoreBar'
 import '../../App.css'
 
-import { reload, changeApple, changeDirection, setPlay } from "../../actions"
+import { reload, changeApple, changeDirection, setPlay, scoreUp } from "../../actions"
 
 
 
 
-const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, reload, changeApple, changeDirection, setPlay}) => {
+const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, reload, changeApple, changeDirection, setPlay, scoreUp}) => {
     
     const [nextDirection, setNextDirection] = useState("ArrowRight")
 
@@ -25,10 +25,10 @@ const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, 
             changeDirection(nextDirection)
             if (apple[0] === head[0] && apple[1] === head[1]){
                 changeApple()
+                scoreUp()
             }
             let timer = setTimeout(() => {
                 reload()
-                // dispatch({type:"RELOAD", payload:''})
             }, speed);
             return () => clearTimeout(timer);
         } 
@@ -66,7 +66,8 @@ const mapStateToProps = state => {
         play: state.play,
         body: state.body,
         direction: state.direction, 
-        apple: state.apple
+        apple: state.apple,
+        score: state.score,
     }
 }
-export default connect(mapStateToProps, { reload, changeApple, changeDirection, setPlay })(Snake);
+export default connect(mapStateToProps, { reload, changeApple, changeDirection, setPlay, scoreUp })(Snake);
