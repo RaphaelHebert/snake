@@ -189,19 +189,7 @@ forms
 */
 
 fieldset {
-  display: flex;
-  flex-flow: row nowrap;
-  border: none;
-  justify-content: space-evenly;
-  width: 100%;
-}
-
-fieldset label {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%
+  padding: 0;
 }
 
 form {
