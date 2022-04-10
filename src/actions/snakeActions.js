@@ -5,9 +5,17 @@ export const CHANGE_DIRECTION = "CHANGE_DIRECTION"
 export const PLAY = "PLAY"
 export const SCORE = "SCORE"
 export const SPEED = "SPEED"
+export const LOST = "LOST"
 
 
 //actions creators
+export const lost = () => {
+    return {
+        type: LOST,
+        payload:''
+    }
+}
+
 export const setSpeed = millisec => {
     return{
         type: SPEED,
@@ -38,7 +46,6 @@ export const changeApple = () => {
 }
 
 export const changeDirection = ( direction ) => {
-
     return {
         type: CHANGE_DIRECTION,
         payload: direction

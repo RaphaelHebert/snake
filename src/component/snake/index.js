@@ -4,10 +4,7 @@ import { connect } from "react-redux";
 import ScoreBar from '../ScoreBar'
 import '../../App.css'
 
-import { reload, changeApple, changeDirection, setPlay, scoreUp, speed } from "../../actions"
-
-
-
+import { reload, changeApple, changeDirection, setPlay, scoreUp, lost } from "../../actions/snakeActions"
 
 const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, reload, changeApple, changeDirection, setPlay, scoreUp}) => {
     
@@ -62,13 +59,13 @@ const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, 
 
 const mapStateToProps = state => {
     return {
-        head: state.head,
-        play: state.play,
-        body: state.body,
-        direction: state.direction, 
-        apple: state.apple,
-        score: state.score,
-        speed: state.speed
+        head: state.snake.head,
+        play: state.snake.play,
+        body: state.snake.body,
+        direction: state.snake.direction, 
+        apple: state.snake.apple,
+        score: state.snake.score,
+        speed: state.snake.speed,
     }
 }
-export default connect(mapStateToProps, { reload, changeApple, changeDirection, setPlay, scoreUp })(Snake);
+export default connect(mapStateToProps, { reload, changeApple, changeDirection, setPlay, scoreUp, lost })(Snake);

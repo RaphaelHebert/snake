@@ -1,14 +1,12 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { connect } from "react-redux"
 
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+import { login, logout } from '../../actions/authActions'
+
+const Navbar = ({ loggedIn, logout }) => {
     const nav = useNavigate()
 
     const { pathname } = useLocation()
-
-    const logout = () => {
-        localStorage.removeItem('token');
-        setLoggedIn(false)
-    }
 
     return(
         <div className="flexRowNoWrap navbar">
@@ -29,4 +27,9 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     )
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.loggedIn
+    }
+}
+export default connect(mapStateToProps,  { login, logout })(Navbar);

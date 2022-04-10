@@ -8,10 +8,9 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { snakeReducer } from './reducers'
+import reducer from './reducers'
 
-
-const store = createStore(snakeReducer)
+const store = createStore(reducer)
 
 ReactDOM.render(
   <React.StrictMode>

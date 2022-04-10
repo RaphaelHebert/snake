@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setSpeed } from "../actions"
+import { setSpeed } from "../actions/snakeActions"
 
 const handleSubmit = e => {
     e.preventDefault()
