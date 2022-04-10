@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import * as yup from 'yup'
 import axios from 'axios'
+import { login } from '../actions/authActions' 
 
 import '../App.css'
 
@@ -17,7 +20,7 @@ const schema = yup.object().shape({
         .required('Please Enter your password')
 })
 
-const SignIn = ({ setLoggedIn }) => {
+const SignIn = ({ login }) => {
     const[disable, setDisable]= useState(true)
     const[loginError, setLoginError] = useState(null)
     const[formData, setFormData] = useState({
@@ -42,7 +45,7 @@ const SignIn = ({ setLoggedIn }) => {
                 localStorage.setItem('token', res.data.token);
                 setFormData({username: "", password: ""});
                 setLoginError(null);
-                setLoggedIn(true);
+                login(true);
                 navigate('/');
             })
             .catch(err => {
@@ -102,4 +105,9 @@ const SignIn = ({ setLoggedIn }) => {
         </div>
     )
 }
-export default SignIn;
+
+const MapStateToProps = state => {
+    return {}
+}
+
+export default connect(MapStateToProps,{login})(SignIn);

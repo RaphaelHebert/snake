@@ -10,15 +10,12 @@ const Snake = ({ head, play, body, direction, apple, loose, score, speed, lost, 
     
     const [nextDirection, setNextDirection] = useState("ArrowRight")
 
-    console.log(`from state: ${head} ${play} ${body} ${direction} ${apple}`)
-
     useEffect(() => {
         changeApple()
     }, [])
 
     useEffect(() => {
         if(play){
-            console.log("timing....")
             changeDirection(nextDirection)
             if (apple[0] === head[0] && apple[1] === head[1]){
                 changeApple()

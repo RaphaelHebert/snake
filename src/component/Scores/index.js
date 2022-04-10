@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from "axios";
 
 import { axiosWithAuth } from '../../auth/axiosAuth';
@@ -11,8 +11,6 @@ const Scores = ({ loggedIn }) => {
 
     const [topTen, setTopTen ] = useState([])
     const [ userScores, setUserScores ] = useState([])
-
-    const nav = useNavigate()
 
     const dateParser = (date) => {
         return date.split('T')[0].split('-').reverse().join('/')
@@ -32,7 +30,7 @@ const Scores = ({ loggedIn }) => {
                 setUserScores(res.data)
             })
             .catch(err => {
-                setUserScores([{score: "no scores available"}])
+                setUserScores([{score: "no score available"}])
             });
     }, [])
     return(
@@ -52,7 +50,7 @@ const Scores = ({ loggedIn }) => {
                     {
                         topTen.map((player, index) => {
                             return (
-                                <tr className={index%2===0? "evenRow":"oddRow"}>
+                                <tr key={player.created_at} className={index%2===0? "evenRow":"oddRow"}>
                                     <td>{index + 1}</td>
                                     <td>{player.username}</td>
                                     <td>{player.score}</td>
@@ -77,17 +75,22 @@ const Scores = ({ loggedIn }) => {
                     { loggedIn?
                         <tbody>
                             {
-                                userScores.map( (player, index) => {
+                                userScores.map((player, index) => {
                                     return (
-                                        <tr className={index%2===0? "evenRow":"oddRow"}> 
-                                        <td> {player.score} </td> 
-                                        <td>{dateParser(player.created_at)}</td>
+                                        <tr key={player.created_at} className={index%2===0? "evenRow":"oddRow"}> 
+                                            <td> {player.score} </td> 
+                                            <td>{player.created_at && dateParser(player.created_at)}</td>
                                         </tr>
                                     )
                                 })
                             }
                         </tbody>
-                        : <tr><td>You must be logged in!!</td></tr>
+                        : 
+                        <tbody>
+                            <tr>
+                                <td>You must be logged in!!</td>
+                            </tr>
+                        </tbody>
                     }
                 </table>
             </div>
@@ -96,4 +99,9 @@ const Scores = ({ loggedIn }) => {
     )
 }
 
-export default Scores
+const MapStateToProps = state => {
+    return {
+        loggedIn: state.auth.loggedIn
+    }
+}
+export default connect(MapStateToProps, {})(Scores)

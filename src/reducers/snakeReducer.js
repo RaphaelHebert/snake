@@ -1,3 +1,6 @@
+import { axiosWithAuth } from '../auth/axiosAuth.js';
+import API_URL from '../config.js';
+
 import { RELOAD } from '../actions/snakeActions'
 import { CHANGE_APPLE } from '../actions/snakeActions'
 import { CHANGE_DIRECTION } from '../actions/snakeActions'
@@ -78,6 +81,14 @@ export const snakeReducer = (state=initialState, action) => {
             let play = true
             if(state.body.filter(bodyPart => bodyPart[0] === head[0] &&  bodyPart[1] === head[1]).length > 0){
                 play = false;
+                const payload = {score: state.score, gameId: 1}
+                axiosWithAuth().post(API_URL + "scores", payload)
+                    .then(res => {
+                    console.log(`score ${state.score} saved!`)
+                    })
+                    .catch(err => 
+                    console.log(`An error occurred: \n ${err.message}`)
+                    ) 
             }
 
             return {
