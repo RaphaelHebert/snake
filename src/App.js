@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import jwt_decode from "jwt-decode";
@@ -20,7 +20,7 @@ import API_URL from './config'
 import './App.css';
 
 
-function App({ login, score, lost, loggedIn }) {
+function App({ login, score, lost }) {
   
   useEffect(() => {
     login()
@@ -47,9 +47,8 @@ function App({ login, score, lost, loggedIn }) {
 
 const MapStateToProps = state => {
   return {
-    loggedIn: state.loggedIn,
-    score: state.score,
-    lost: state.lost
-  }
+    loggedIn: state.auth.loggedIn,
+    score: state.snake.score,
+    lost: state.snake.lost,  }
 }
 export default connect(MapStateToProps, { login })(App);

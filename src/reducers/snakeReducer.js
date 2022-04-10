@@ -75,7 +75,10 @@ export const snakeReducer = (state=initialState, action) => {
             }
 
             //check if the head touches the body
-            const play = !(state.body.filter(bodyPart => bodyPart === head).length > 0)
+            let play = true
+            if(state.body.filter(bodyPart => bodyPart[0] === head[0] &&  bodyPart[1] === head[1]).length > 0){
+                play = false;
+            }
 
             return {
                 ...state,

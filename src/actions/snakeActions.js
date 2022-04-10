@@ -21,7 +21,6 @@ export const setSpeed = millisec => {
         type: SPEED,
         payload: millisec
     }
-    
 }
 
 export const scoreUp = () => {

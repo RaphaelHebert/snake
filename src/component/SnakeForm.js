@@ -6,8 +6,6 @@ const handleSubmit = e => {
 }
 
 const SnakeForm = ({ speed, play, setSpeed }) => {
-
-    console.log(speed, play, setSpeed)
     
     return(
         <form className="flexColCenter" onSubmit={handleSubmit}>
@@ -29,8 +27,8 @@ const SnakeForm = ({ speed, play, setSpeed }) => {
 
 const MapStateToProps = state => {
     return {
-        play: state.play,
-        speed: state.speed
+        play: state.snake.play,
+        speed: state.snake.speed
     }
 }
 export default connect(MapStateToProps, { setSpeed })(SnakeForm);
